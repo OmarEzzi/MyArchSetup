@@ -1,0 +1,21 @@
+window{
+    font-size: 30px;
+    background-color: black;
+    color: white;
+    border: 2px solid #48a8f7;
+}
+#input{
+    background-color: black;
+    redius: 10px;
+    color: white;
+    border: 2px solid #4dabf7;
+}
+#entry:selected{
+    background-color: white;
+    border: 2px solid #4dabf7;
+    border-radius: 10px;
+}
+#text:selected{
+    color: black;
+    /*1*/
+}
