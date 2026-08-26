@@ -17,6 +17,7 @@ git clone https://github.com/OmarEzzi/dotfiles.git
 cd dotfiles
 chmod +x install.sh
 ./install.sh
+```
 
 the script will ask for sudo password to update system and install yay and all the packages. after it finish, just reboot your pc and login using ly display manager.
 
