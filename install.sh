@@ -43,7 +43,8 @@ sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
 sudo systemctl disable lightdm.service
 sudo systemctl mask lightdm.service
-sudo systemctl enable ly@tty1.service
+sudo systemctl enable ly.service
+sudo systemctl enable power-profiles-daemon
 
 echo "setup configs"
 mkdir -p ~/.config
