@@ -41,6 +41,8 @@ cd $DIR
 echo "services"
 sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
+sudo systemctl disable lightdm.service
+sudo systemctl mask lightdm.service
 sudo systemctl enable ly@tty1.service
 
 echo "setup configs"
