@@ -12,6 +12,7 @@ hi guys, this is my personal dotfiles for arch linux. im a student and I write t
 ### how to install
 its very simple, just open your terminal and copy this:
 
+```bash
 git clone https://github.com/OmarEzzi/dotfiles.git
 cd dotfiles
 chmod +x install.sh
