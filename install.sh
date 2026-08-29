@@ -24,7 +24,7 @@ echo "install disks and android support"
 sudo pacman -S --needed gvfs ntfs-3g exfatprogs udiskie gvfs-mtp mtpfs android-udev --noconfirm
 
 echo "install themes, utilities and ly"
-sudo pacman -S --needed power-profiles-daemon brightnessctl nwg-displays nwg-look qt6ct ly --noconfirm
+sudo pacman -S --needed power-profiles-daemon brightnessctl nwg-displays nwg-look qt6ct ly fish --noconfirm
 
 echo "install yay"
 rm -rf /tmp/yay
@@ -39,6 +39,7 @@ yay -S --needed wlogout --noconfirm
 cd $DIR
 
 echo "services"
+chsh -s /usr/bin/fish
 sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
 sudo systemctl disable lightdm.service
