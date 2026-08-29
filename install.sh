@@ -53,11 +53,12 @@ mkdir -p ~/.config
 rm -rf ~/.config/sway
 rm -rf ~/.config/waybar
 rm -rf ~/.config/wofi
+rm -rf ~/.config/fish
 rm -f ~/.bashrc
 
 cp -r sway ~/.config/sway
 cp -r waybar ~/.config/waybar
 cp -r wofi ~/.config/wofi
-cp .bashrc ~/.bashrc
+cp -r fish ~/.config/fish
 
 echo "finish"
