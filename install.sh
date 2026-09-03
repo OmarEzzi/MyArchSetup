@@ -61,4 +61,8 @@ cp -r waybar ~/.config/waybar
 cp -r wofi ~/.config/wofi
 cp -r fish ~/.config/fish
 
+sudo pacman -S flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.github.tchx84.Flatseal
+
 echo "finish"
