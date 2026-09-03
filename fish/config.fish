@@ -12,6 +12,7 @@ alias i 'sudo pacman -S'
 alias r 'sudo pacman -Rns'
 alias cls 'sudo pacman -Sc'
 
+alias if 'flatpak install flathub'
 
 alias iy='yay -S'
 alias u='yay -Syu'
