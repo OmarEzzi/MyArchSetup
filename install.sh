@@ -23,8 +23,8 @@ sudo pacman -S --needed thunar unzip p7zip unrar ark --noconfirm
 echo "install disks and android support"
 sudo pacman -S --needed gvfs ntfs-3g exfatprogs udiskie gvfs-mtp mtpfs android-udev --noconfirm
 
-echo "install themes, utilities and ly"
-sudo pacman -S --needed power-profiles-daemon brightnessctl nwg-displays nwg-look qt6ct ly fish --noconfirm
+echo "install themes, utilities and lapce"
+sudo pacman -S --needed power-profiles-daemon brightnessctl nwg-displays nwg-look qt6ct lapce fish --noconfirm
 
 echo "install yay"
 rm -rf /tmp/yay
@@ -44,7 +44,6 @@ sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
 sudo systemctl disable lightdm.service
 sudo systemctl mask lightdm.service
-sudo systemctl enable ly.service
 sudo systemctl enable power-profiles-daemon
 
 echo "setup configs"
