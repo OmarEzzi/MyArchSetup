@@ -14,7 +14,7 @@ its very simple, just open your terminal and copy this:
 
 ```bash
 git clone https://github.com/OmarEzzi/dotfiles.git
-cd dotfiles
+cd MyArchSetup
 chmod +x install.sh
 ./install.sh
 ```
