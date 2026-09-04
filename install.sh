@@ -3,7 +3,7 @@ DIR=$PWD
 echo "update system"
 sudo pacman -Syu --noconfirm
 echo "install base"
-sudo pacman -S --needed base-devel git pam xcb-util --noconfirm
+sudo pacman -S --needed base-devel git --noconfirm
 echo "install sway and wayland stuff"
 sudo pacman -S --needed sway waybar swayidle swaylock wl-clipboard xorg-xwayland xdg-desktop-portal-wlr wofi --noconfirm
 echo "install network, bluetooth, audio"
@@ -24,22 +24,11 @@ cd yay
 makepkg -si --noconfirm
 echo "install wlogout from AUR"
 yay -S --needed wlogout --noconfirm
-echo "build and install ly display manager"
-cd /tmp
-rm -rf ly
-git clone --recurse-submodules https://github.com/fairyglade/ly
-cd ly
-make
-sudo make install
-sudo make installsystemd
 cd $DIR
 echo "services"
 chsh -s /usr/bin/fish
 sudo systemctl enable NetworkManager
 sudo systemctl enable bluetooth
-sudo systemctl disable lightdm.service
-sudo systemctl mask lightdm.service
-sudo systemctl enable ly.service
 sudo systemctl enable power-profiles-daemon
 echo "setup configs"
 mkdir -p ~/.config
@@ -52,7 +41,7 @@ cp -r sway ~/.config/sway
 cp -r waybar ~/.config/waybar
 cp -r wofi ~/.config/wofi
 cp -r fish ~/.config/fish
-sudo pacman -S flatpak --noconfirm
+sudo pacman -S flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.tchx84.Flatseal -y
+flatpak install flathub com.github.tchx84.Flatseal
 echo "finish"
