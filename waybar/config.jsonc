@@ -17,7 +17,6 @@
     "mpd",
     "idle_inhibitor",
     "pulseaudio",
-    "bluetooth",
     "power-profiles-daemon",
     "cpu",
     "memory",
@@ -115,7 +114,6 @@
 
   "backlight": {
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
 
   "battery": {
@@ -147,16 +145,6 @@
     }
   },
 
-/*  "network": {
-    "format-wifi": " {essid} ({signalStrength}%)",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "⚠️ غير متصل",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "on-click": "nm-connection-editor"
-  },*/
-
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
     "format-bluetooth": "{volume}% {icon} {format_source}",
@@ -168,31 +156,10 @@
       "headphone": "",
       "hands-free": "",
       "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
   },
-
-  "custom/media": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜"
-    },
-    "escape": true,"exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
-  },
-
-  "bluetooth": {
-    "format": " {status}",
-    "format-connected": " {device_alias}",
-    "on-click": "blueman-manager"
-  },
-
   "custom/power": {
     "format": "⏻",
     "tooltip": false,
