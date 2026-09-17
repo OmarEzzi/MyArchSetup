@@ -10,6 +10,8 @@ alias .. 'cd ..'
 alias s 'pacman -Ss'
 alias i 'sudo pacman -S'
 alias r 'sudo pacman -Rns'
+alias cls 'sudo pacman -Sc'
+alias rt='rm -rf ~/.local/share/Trash/*'
 
 alias ifl 'flatpak install flathub'
 
