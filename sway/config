@@ -168,7 +168,6 @@ bar {
 # Background Applets & Services
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-exec pavucontrol --daemon
 
 # Include external config files
 include /etc/sway/config.d/*
