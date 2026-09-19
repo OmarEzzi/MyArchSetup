@@ -24,3 +24,5 @@ alias lo='swaymsg exit'
 alias x='exit'
 
 alias nm='nmtui'
+
+alias ytd='yt-dlp -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]" --yes-playlist'
