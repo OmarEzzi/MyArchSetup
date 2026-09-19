@@ -1,4 +1,4 @@
-# Default config for sway
+#Default config for sway
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
@@ -252,7 +252,6 @@ input "type:touchpad" {
     natural_scroll enabled
     middle_emulation enabled
 }
-
 exec swayidle -w \
          timeout 300 'swaymsg "output * dpms off"' \
          resume 'swaymsg "output * dpms on"'
@@ -263,4 +262,4 @@ input "1739:52714:Synaptics_TM3562-003" {
     pointer_accel 0.7
     tap enabled
 }   
-#1
+
