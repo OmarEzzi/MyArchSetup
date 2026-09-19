@@ -7,7 +7,7 @@ sudo pacman -S --needed base-devel git --noconfirm
 echo "install sway and wayland stuff"
 sudo pacman -S --needed sway waybar swayidle swaylock wl-clipboard xorg-xwayland xdg-desktop-portal-wlr wofi --noconfirm
 echo "install network, bluetooth, audio"
-sudo pacman -S --needed networkmanager bluez blueman pipewire pipewire-pulse wireplumber pavucontrol playerctl --noconfirm
+sudo pacman -S --needed networkmanager network-manager-applet bluez blueman pipewire pipewire-pulse wireplumber pavucontrol playerctl --noconfirm
 echo "install terminal, media, fonts"
 sudo pacman -S --needed foot python mpd mpc mpv otf-font-awesome noto-fonts ttf-roboto --noconfirm
 echo "install file manager and archives"
