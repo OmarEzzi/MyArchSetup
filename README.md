@@ -13,7 +13,7 @@ hi guys, this is my personal dotfiles for arch linux. im a student and I write t
 its very simple, just open your terminal and copy this:
 
 ```bash
-git clone https://github.com/OmarEzzi/dotfiles.git
+git clone https://github.com/OmarEzzi/MyArchSetup.git
 cd MyArchSetup
 chmod +x install.sh
 ./install.sh
