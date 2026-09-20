@@ -1,37 +1,33 @@
-# Sway Window Manager Configuration File
-# Optimized for a minimal, Wayland-native workflow
+# ==========================================
+# Sway Window Manager Configuration
+# ==========================================
 
-### Variables ###
-# Set the modifier key to Super/Windows
+# --- Core Variables ---
 set $mod Mod4
-
-# Set preferred applications
-set $term foot
-set $menu wofi --show drun
-
-# Vim-style directional keys
 set $left h
 set $down j
 set $up k
 set $right l
+set $term foot
+set $menu wofi --show drun
 
+# --- Environment Variables (Qt) ---
+exec_always export QT_QPA_PLATFORMTHEME=qt5ct
+exec_always export QT_STYLE_OVERRIDE=Fusion
+exec_always export QT_AUTO_SCREEN_SCALE_FACTOR=1
+exec_always export QT_QPA_PLATFORMTHEME=qt6ct
 
-### Appearance & Output ###
-# Solid black background for a minimal look
+# --- Output / Display ---
 output * bg #000000 solid_color
 
-# Default window borders (2 pixels, no gaps)
-default_border pixel 2
-
-
-### Input Configuration ###
-# Keyboard: US and Arabic layouts, toggle with Super+Space
+# --- Input Devices ---
+# Global Keyboard Layout
 input * {
     xkb_layout "us,ara"
     xkb_options "grp:win_space_toggle"
 }
 
-# Global Touchpad Settings
+# General Touchpad Settings
 input "type:touchpad" {
     dwt enabled
     tap enabled
@@ -39,36 +35,44 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
-# Hardware-Specific Touchpad Profile
+# Specific Touchpad Device (Synaptics)
 input "1739:52714:Synaptics_TM3562-003" {
     accel_profile "flat"
     pointer_accel 0.7
     tap enabled
-}   
+}
 
+# --- Appearance ---
+default_border pixel 2
 
-### Key Bindings ###
+# --- Autostart & Idle ---
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec pavucontrol --daemon
 
-# --- Core Applications ---
+# Screen power management
+exec swayidle -w \
+         timeout 300 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"'
+
+# --- Status Bar ---
+bar {
+    swaybar_command waybar
+}
+
+# ==========================================
+# Keybindings
+# ==========================================
+
+# --- Basics ---
 bindsym $mod+t exec $term
-bindsym $mod+e exec thunar
-bindsym --release Super_L exec $menu
-
-# --- Window Management ---
 bindsym $mod+q kill
+bindsym --release Super_L exec $menu
 floating_modifier $mod normal
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+space focus mode_toggle
-bindsym $mod+f fullscreen
-bindsym $mod+b splith
-bindsym $mod+v splitv
-bindsym $mod+a focus parent
-
-# --- System Controls ---
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
 
-# --- Focus Navigation ---
+# --- Focus ---
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -78,7 +82,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# --- Moving Windows ---
+# --- Movement ---
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
@@ -88,7 +92,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# --- Workspaces Navigation ---
+# --- Workspaces ---
+# Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -100,7 +105,7 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-# --- Moving Windows to Workspaces ---
+# Move container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -112,33 +117,36 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# --- Scratchpad (Hidden Windows) ---
+# --- Layouts ---
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+e exec thunar
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# --- Scratchpad ---
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# --- Touchpad Gestures ---
-# Swipe down with 4 fingers to instantly return to workspace 1
-bindgesture swipe:4:down workspace number 1
-
-# --- Window Resizing Mode ---
+# --- Resize Mode ---
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
-
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
-# --- Media & Hardware Keys ---
-# Audio (PulseAudio)
+# --- Media & System Controls ---
+# Audio & Microphone (PulseAudio)
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
@@ -158,16 +166,5 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 # Screenshot
 bindsym Print exec grim
 
-
-### Status Bar & Autostart ###
-# Top panel
-bar {
-    swaybar_command waybar
-}
-
-# Background Applets & Services
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-
-# Include external config files
+# --- Includes ---
 include /etc/sway/config.d/*
