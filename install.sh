@@ -23,17 +23,7 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
 echo "install wlogout from AUR"
-cd
-git clone https://aur.archlinux.org/ly.git
-cd ly
-makepkg -si
-sudo systemctl disable lightdm
-sudo systemctl enable ly.service
-cd
-git clone https://aur.archlinux.org/wlogout.git
-cd wlogout
-makepkg -si
-cd
+yay -S wlogout
 cd $DIR
 echo "services"
 chsh -s /usr/bin/fish
