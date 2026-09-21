@@ -22,8 +22,7 @@ cd /tmp
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si --noconfirm
-echo "install wlogout from AUR"
-yay -S wlogout
+
 cd $DIR
 echo "services"
 chsh -s /usr/bin/fish
