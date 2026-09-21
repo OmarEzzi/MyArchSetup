@@ -16,7 +16,7 @@ alias rt='rm -rf ~/.local/share/Trash/*'
 alias ifl 'flatpak install flathub'
 
 alias iy='yay -S'
-alias u='yay -Syu'
+alias u='sudo pacman -Syu'
 
 alias po='systemctl poweroff'
 alias rb='systemctl reboot'
